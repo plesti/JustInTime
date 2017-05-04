@@ -13,8 +13,21 @@ ext {
   neo4jVersion = '3.1.1'
 }
 
+// Theres properties can be separated to a gradle.properties file
+// It should contain the elements like:
+//    systemProp.sonar.host.url=http://localhost:9000
+//    systemProp.sonar.login=token
+sonarqube {
+  properties {
+    property "sonar.host.url", "http://localhost:9000"
+    property "sonar.login", "admin"  // Default sonar username
+    property 'sonar.password', 'admin'  // Default sonar password
+  }
+}
+
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'jacoco'  // Used for generating coverage report
   apply plugin: 'maven'
   apply plugin: 'maven-publish'
 
