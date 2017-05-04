@@ -67,6 +67,7 @@ public class EmbeddedTestkitDriverTest {
 	@Test
 	public void testUnsupportedOperationException_stringparam () {
 		try (Driver driver = new EmbeddedTestkitDriver()) {
+			driver.session("xyz");
 		}
 		catch(UnsupportedOperationException e)
 		{
@@ -76,6 +77,7 @@ public class EmbeddedTestkitDriverTest {
 	@Test
 	public void testGraphDatabaseService2_2params () {
 		try (Driver driver = new EmbeddedTestkitDriver()) {
+			driver.session(AccessMode.READ,"xyz");
 		}
 		catch(UnsupportedOperationException e)
 		{
