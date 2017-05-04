@@ -6,7 +6,7 @@ import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
-
+import org.neo4j.driver.v1.AccessMode;
 import neo4j.driver.util.PrettyPrinter;
 
 public class EmbeddedTestkitDriverTest {
@@ -56,6 +56,30 @@ public class EmbeddedTestkitDriverTest {
 					}
 				}
 			}
+		}
+	}
+	@Test
+	public void testEncrypt() {
+		try (Driver driver = new EmbeddedTestkitDriver()) {
+			assert(!driver.isEncrypted());
+		}
+	}
+	@Test
+	public void testUnsupportedOperationException_stringparam () {
+		try (Driver driver = new EmbeddedTestkitDriver()) {
+		}
+		catch(UnsupportedOperationException e)
+		{
+			assert(true);
+		}
+	}
+	@Test
+	public void testGraphDatabaseService2_2params () {
+		try (Driver driver = new EmbeddedTestkitDriver()) {
+		}
+		catch(UnsupportedOperationException e)
+		{
+			assert(true);
 		}
 	}
 }
