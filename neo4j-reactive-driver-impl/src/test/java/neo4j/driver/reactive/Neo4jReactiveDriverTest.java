@@ -69,7 +69,6 @@ public class Neo4jReactiveDriverTest {
 		}
 
 		final String PERSONS_QUERY = "persons";
-		final String = "build";
 
 		session.registerQuery(PERSONS_QUERY, "MATCH (a:Person) RETURN a");
 		runUpdate(session, "CREATE (a:Person {name: $name})", parameters("name", "Bob"));
